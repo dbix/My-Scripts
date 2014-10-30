@@ -1,0 +1,109 @@
+#!/bin/sh
+
+#  .bash_funcs
+#
+#
+#  Created by Derek Bixler on 8/5/14.
+#
+
+###############################################################################
+# Functions                                                                   #
+###############################################################################
+# "Here string" echo to stdout
+hechout()
+{
+    cat <<< "$@";
+}
+
+# "Here string" echo to stderr
+hecherr()
+{
+    cat <<< "$@" 1>&2;
+}
+
+# String to array
+# stoa(input) = echo ret
+# stoa(input, output) => output=ret
+stoa()
+{
+    input=$1
+    output=$2
+    read -r -a $output <<< "$input";
+    if [[ "$output" ]]; then
+    eval $output
+    else
+    for i in "${sarray[@]}"
+    do echo "$i"
+    done
+    fi
+}
+
+# Give myself ownership over folder
+i_own()
+{
+    DIR=$(pwd)
+    sudo chown "$USERNAME" "$DIR"
+}
+
+# Reset env values to default
+restart()
+{
+    source "/Users/dbixler/.bashrc"
+    source "/Users/dbixler/.bash_funcs"
+    source "/Users/dbixler/.bash_vars"
+    source "/Users/dbixler/.bash_colors"
+    source "/Users/dbixler/.bash_profile"
+    cd "$HOME"
+}
+
+# Prints various machine information
+machine_info()
+{
+    echo -e "\nYou are logged on ${RED}$HOST"
+    echo -e "\nAdditionnal information:$NC " ; uname -a
+    echo -e "\n${RED}Users logged on:$NC " ; w -h
+    echo -e "\n${RED}Current date :$NC " ; date
+    echo -e "\n${RED}Machine stats :$NC " ; uptime
+    echo -e "\n${RED}Current network location :$NC " ; scselect
+    echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+    #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+    echo
+}
+
+# Create dir if nonexistent
+function touch_dir()
+{
+    if [ ! -d "$@" ]
+        then mkdir "$@"
+    fi
+}
+
+# Display todo list
+function todo()
+{
+    cat "/Users/dbixler/.todo"
+}
+
+# Add automatically numbered item to todo list
+function todo_add()
+{
+    CURR_NUM=${wc -l "$TODO" | awk {print "$1"}}
+    CURR_ITEM="$@"
+    echo $CURR_NUM '{'  $CURR_ITEM  '}' >> "$TODO"
+}
+
+# Add automatically numbered item to todo list
+function todo_rm()
+{
+    python /Users/dbixler/Developer/scripts/files.
+}
+
+# Debug a bash script slightly easier
+function db()
+{
+    bash -x "$@"
+}
+
+# For bash profile to know we're done
+
+export FUNCS_INIT=true

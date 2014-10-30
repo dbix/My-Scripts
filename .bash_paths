@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#  .bash_paths
+#
+#
+#  Created by Derek Bixler on 8/5/14.
+#
+
+###############################################################################
+# PATH                                                                        #
+###############################################################################
+export PATH="$PATH":"$PYTHON3_HOME/bin":"$PYTHON_HOME/bin"
+export PATH="$PATH":"/usr/local/bin":"/usr/bin":"/usr/sbin":"/sbin":"/bin"
+export PATH="$PATH":"$DROID_SDK_HOME/platform-tools":"$DROID_SDK_HOME/tools"
+export PATH="$PATH":"/Applications/MATLAB_R2013b.app/bin"
+export PATH="$PATH":"/opt/local/bin":"/opt/local/sbin"
+export PATH="$PATH":"$JS_HOME/Resources/jsc"
+export PATH="$PATH":"/usr/texbin"
+export PATH="$PATH":"/Users/dbixler/Developer/scripts"
+
+export PATHS_INIT=true
