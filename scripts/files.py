@@ -32,11 +32,10 @@ def remove_line(lineno):
     file = open(PATH, "w")
     for line in lines:
         """
-        Check if each line is a
-        valid line and also not
-        the one we're supposed
-        to be removing before
-        we put it back
+        Check if each line is a valid 
+        line and also not the one 
+        we're supposed to be removing 
+        before we put it back
         """
         if l != lineno:
             if TODO_PATT.match(line):
